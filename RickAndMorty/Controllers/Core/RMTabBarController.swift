@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//episode 7 -> 5.40
+//episode 11 -> 11.30
 /// Controller to house tabs and root tab controllers
 final class RMTabBarController: UITabBarController {
 
