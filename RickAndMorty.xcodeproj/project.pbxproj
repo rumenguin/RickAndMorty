@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3506490629A1518B00DB0381 /* RMEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3506490529A1518B00DB0381 /* RMEpisodeDetailViewController.swift */; };
 		3523AB3E2982D1B500320053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3523AB3D2982D1B500320053 /* AppDelegate.swift */; };
 		3523AB402982D1B500320053 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3523AB3F2982D1B500320053 /* SceneDelegate.swift */; };
 		3523AB422982D1B500320053 /* RMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3523AB412982D1B500320053 /* RMTabBarController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3506490529A1518B00DB0381 /* RMEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		3523AB3A2982D1B500320053 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3523AB3D2982D1B500320053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3523AB3F2982D1B500320053 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				35CF9079299BB3EE00FD6C46 /* RMCharacterDetailViewController.swift */,
+				3506490529A1518B00DB0381 /* RMEpisodeDetailViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				35ABF1F229839637009A5334 /* RMEndPoint.swift in Sources */,
 				35ABF1EE2983960C009A5334 /* RMService.swift in Sources */,
 				3523AB592982D47B00320053 /* RMLocation.swift in Sources */,
+				3506490629A1518B00DB0381 /* RMEpisodeDetailViewController.swift in Sources */,
 				3523AB5B2982D48F00320053 /* RMCharacter.swift in Sources */,
 				35ABF208298417A3009A5334 /* RMCharacterCollectionViewCellViewModel.swift in Sources */,
 				35ABF1F029839620009A5334 /* RMRequest.swift in Sources */,

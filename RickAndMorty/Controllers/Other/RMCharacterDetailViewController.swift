@@ -83,7 +83,6 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
                 fatalError()
             }
             cell.configure(with: viewModel)
-            cell.backgroundColor = .systemBlue
             return cell
         case .information(viewModels: let viewModels):
             
@@ -91,7 +90,6 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
                 fatalError()
             }
             cell.configure(with: viewModels[indexPath.row])
-            cell.backgroundColor = .systemRed
             return cell
             
         case .episodes(viewModels: let viewModels):
@@ -99,10 +97,26 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? RMCharacterEpisodeCollectionViewCell else {
                 fatalError()
             }
-            cell.configure(with: viewModels[indexPath.row])
-            cell.backgroundColor = .systemOrange
+            let viewModel = viewModels[indexPath.row]
+            cell.configure(with: viewModel)
             return cell
             
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        let sectionType = viewModel.sections[indexPath.section]
+        switch sectionType {
+        case .photo, .information:
+            break
+        case .episodes:
+            let episodes = self.viewModel.episodes
+            let selection = episodes[indexPath.row]
+            let vc = RMEpisodeDetailViewController(url: URL(string: selection))
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
 }
