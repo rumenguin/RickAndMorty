@@ -32,6 +32,23 @@ enum RMSettingsOption: CaseIterable {
         }
     }
     
+    var targetUrl: URL? {
+        switch self {
+        case .rateApp:
+            return nil
+        case .contactUs:
+            return URL(string: "https://twitter.com/rumenguin")
+        case .terms:
+            return URL(string: "https://twitter.com/rumenguin")
+        case .privacy:
+            return URL(string: "https://twitter.com/rumenguin")
+        case .apiReference:
+            return URL(string: "https://rickandmortyapi.com")
+        case .viewCode:
+            return URL(string: "https://github.com/rumenguin/RickAndMorty")
+        }
+    }
+    
     var iconContainerColor: UIColor {
         switch self {
         case .rateApp:
