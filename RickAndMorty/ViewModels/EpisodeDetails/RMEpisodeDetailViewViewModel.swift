@@ -43,6 +43,13 @@ final class RMEpisodeDetailViewViewModel {
     
     //MARK: - Public
     
+    public func character(at index: Int) -> RMCharacter? {
+        guard let dataTuple = dataTuple else {
+            return nil
+        }
+        return dataTuple.characters[index]
+    }
+    
     
     
     //MARK: - Private
@@ -54,12 +61,18 @@ final class RMEpisodeDetailViewViewModel {
         }
         let episode = dataTuple.episode
         let characters = dataTuple.characters
+        
+        var createdString = ""
+        if let date = RMCharacterInfoCollectionViewCellViewModel.dateFormatter.date(from: episode.created) {
+            createdString = RMCharacterInfoCollectionViewCellViewModel.shortDateFormatter.string(from: date)
+        }
+        
         cellViewModels = [
             .information(viewModels: [
                 .init(title: "Episode Name", value: episode.name),
                 .init(title: "Air Date", value: episode.air_date),
-                .init(title: "Episode", value: episode.episode),
-                .init(title: "Created", value: episode.created),
+                .init(title: "Episode Number", value: episode.episode),
+                .init(title: "Created on", value: createdString),
             ]),
             .characters(viewModel: characters.compactMap({ character in
                 
