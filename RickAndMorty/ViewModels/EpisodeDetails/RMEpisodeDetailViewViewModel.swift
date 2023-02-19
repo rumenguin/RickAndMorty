@@ -30,6 +30,7 @@ final class RMEpisodeDetailViewViewModel {
     
     public weak var delegate: RMEpisodeDetailViewViewModelDelegate?
     
+    //only this class has the authority to assign to it
     //public read / privately we can assign to it inside of this class
     public private(set) var cellViewModels: [SectionType] = []
     
