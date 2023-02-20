@@ -1,24 +1,24 @@
 //
-//  RMEpisodeDetailViewViewModel.swift
+//  RMLocationDetailViewViewModel.swift
 //  RickAndMorty
 //
-//  Created by RUMEN GUIN on 19/02/23.
+//  Created by RUMEN GUIN on 20/02/23.
 //
 
 import UIKit
 
-protocol RMEpisodeDetailViewViewModelDelegate: AnyObject {
-    func didFetchEpisodeDetails()
+protocol RMLocationDetailViewViewModelDelegate: AnyObject {
+    func didFetchLocationDetails()
 }
 
-final class RMEpisodeDetailViewViewModel {
+final class RMLocationDetailViewViewModel {
     
     private let endpointUrl: URL?
     
-    private var dataTuple: (episode: RMEpisode, characters: [RMCharacter])? {
+    private var dataTuple: (location: RMLocation, characters: [RMCharacter])? {
         didSet {
             createCellViewModels()
-            delegate?.didFetchEpisodeDetails()
+            delegate?.didFetchLocationDetails()
         }
     }
     
@@ -28,7 +28,7 @@ final class RMEpisodeDetailViewViewModel {
     }
     
     
-    public weak var delegate: RMEpisodeDetailViewViewModelDelegate?
+    public weak var delegate: RMLocationDetailViewViewModelDelegate?
     
     //only this class has the authority to assign to it
     //public read / privately we can assign to it inside of this class
@@ -60,19 +60,19 @@ final class RMEpisodeDetailViewViewModel {
         guard let dataTuple = dataTuple else {
             return
         }
-        let episode = dataTuple.episode
+        let location = dataTuple.location
         let characters = dataTuple.characters
         
-        var createdString = episode.created
-        if let date = RMCharacterInfoCollectionViewCellViewModel.dateFormatter.date(from: episode.created) {
+        var createdString = location.created
+        if let date = RMCharacterInfoCollectionViewCellViewModel.dateFormatter.date(from: location.created) {
             createdString = RMCharacterInfoCollectionViewCellViewModel.shortDateFormatter.string(from: date)
         }
         
         cellViewModels = [
             .information(viewModels: [
-                .init(title: "Episode Name", value: episode.name),
-                .init(title: "Air Date", value: episode.air_date),
-                .init(title: "Episode Number", value: episode.episode),
+                .init(title: "Location Name", value: location.name),
+                .init(title: "Type", value: location.type),
+                .init(title: "Dimension", value: location.dimension),
                 .init(title: "Created on", value: createdString),
             ]),
             .characters(viewModel: characters.compactMap({ character in
@@ -82,26 +82,26 @@ final class RMEpisodeDetailViewViewModel {
         ]
     }
     
-    /// Fetch backing episode model
-    public func fetchEpisodeData() {
+    /// Fetch backing location model
+    public func fetchLocationData() {
         guard let url = endpointUrl,
               let request = RMRequest(url: url) else {
             return
             
         }
         
-        RMService.shared.execute(request, expecting: RMEpisode.self) {[weak self] result in
+        RMService.shared.execute(request, expecting: RMLocation.self) {[weak self] result in
             switch result {
             case .success(let model):
-                self?.fetchRelatedCharacters(episode: model)
+                self?.fetchRelatedCharacters(location: model)
             case .failure:
                 break
             }
         }
     }
     
-    private func fetchRelatedCharacters(episode: RMEpisode) {
-        let requests: [RMRequest] = episode.characters.compactMap({
+    private func fetchRelatedCharacters(location: RMLocation) {
+        let requests: [RMRequest] = location.residents.compactMap({
             return URL(string: $0)
         }).compactMap({
             return RMRequest(url: $0)
@@ -132,7 +132,7 @@ final class RMEpisodeDetailViewViewModel {
         }
         group.notify(queue: .main) {
             self.dataTuple = (
-                episode: episode,
+                location: location,
                 characters: characters
             )
         }
@@ -140,3 +140,4 @@ final class RMEpisodeDetailViewViewModel {
     
     
 }
+
