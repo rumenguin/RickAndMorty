@@ -40,11 +40,10 @@ final class RMSearchViewViewModel {
         //create request based on filters
         //https://rickandmortyapi.com/api/character/?name=rick&status=alive
         
-        //Test search text
-        searchText = "Rick"
+        print("Search Text: \(searchText)")
         //Build arguments
         var queryParams: [URLQueryItem] = [
-            URLQueryItem(name: "name", value: searchText)
+            URLQueryItem(name: "name", value: searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
         ]
         
         //add options
@@ -62,7 +61,7 @@ final class RMSearchViewViewModel {
             endpoint: config.type.endpoint,
             queryParameters: queryParams)
         
-        //print(request.url?.absoluteURL)
+        print(request.url?.absoluteURL)
         
         RMService.shared.execute(request, expecting: RMGetAllCharactersResponse.self) { result in
             //notify view of results, no results, or error
