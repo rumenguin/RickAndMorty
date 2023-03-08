@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3506490629A1518B00DB0381 /* RMEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3506490529A1518B00DB0381 /* RMEpisodeDetailViewController.swift */; };
+		3512C00429B8D74200AC3C71 /* RMSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512C00329B8D74200AC3C71 /* RMSearchResultsView.swift */; };
 		3523AB3E2982D1B500320053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3523AB3D2982D1B500320053 /* AppDelegate.swift */; };
 		3523AB402982D1B500320053 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3523AB3F2982D1B500320053 /* SceneDelegate.swift */; };
 		3523AB422982D1B500320053 /* RMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3523AB412982D1B500320053 /* RMTabBarController.swift */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		3506490529A1518B00DB0381 /* RMEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		3512C00329B8D74200AC3C71 /* RMSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchResultsView.swift; sourceTree = "<group>"; };
 		3523AB3A2982D1B500320053 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3523AB3D2982D1B500320053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3523AB3F2982D1B500320053 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				35BD40AA29A3467E0090077C /* RMSearchView.swift */,
 				35BD40AE29A34C9A0090077C /* RMNoSearchResultsView.swift */,
 				35BD40B329A34D210090077C /* RMSearchInputView.swift */,
+				3512C00329B8D74200AC3C71 /* RMSearchResultsView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				35BD40B229A34CC10090077C /* RMNoSearchResultsViewViewModel.swift in Sources */,
 				35ABF20229840418009A5334 /* RMCharacterListView.swift in Sources */,
 				35ABF1FE2983BCB5009A5334 /* RMGetAllCharactersResponse.swift in Sources */,
+				3512C00429B8D74200AC3C71 /* RMSearchResultsView.swift in Sources */,
 				35ABF1F82983A37D009A5334 /* RMCharacterStatus.swift in Sources */,
 				3528722629A33A4E0059ABB7 /* RMLocationDetailViewViewModel.swift in Sources */,
 				35ABF1FA2983A3B2009A5334 /* RMCharacterGender.swift in Sources */,
