@@ -108,8 +108,49 @@ extension RMLocationView: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RMLocationTableViewCell.cellIdentifier, for: indexPath) as? RMLocationTableViewCell else {
             fatalError()
         }
-        let cellVieModel = cellViewModels[indexPath.row]
-        cell.configure(with: cellVieModel)
+        let cellViewModel = cellViewModels[indexPath.row]
+        cell.configure(with: cellViewModel)
         return cell
     }
+}
+
+extension RMLocationView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let viewModel = viewModel,
+              !viewModel.cellViewModels.isEmpty,
+              viewModel.shouldShowLoadMoreIndicator,
+              !viewModel.isLoadingMoreLocations else {
+            return
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) {[weak self] t in
+            let offset = scrollView.contentOffset.y //2252 (at bottom)
+            let totalContentHeight = scrollView.contentSize.height // 2922
+            let totalScrollViewFixedHeight = scrollView.frame.size.height //671
+            
+           // totalContentHeight - totalScrollViewFixedHeight = (2922 - 671) = 2251
+            //if 2252 >= (2922 - 671-120)
+            //if 2252 >= (2922 - 671-120)
+            //if 2252 >= 2131
+            if offset >= (totalContentHeight - totalScrollViewFixedHeight - 120) {
+                DispatchQueue.main.async {
+                    self?.showLoadingIndicator()
+                }
+                viewModel.fetchAdditionalLocations()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
+                    print("Refreshing table rows")
+                    self?.tableView.reloadData()
+                })
+                
+            }
+            t.invalidate()
+        }
+    }
+    
+    private func showLoadingIndicator() {
+        let footer = RMTableLoadingFooterView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100))
+        tableView.tableFooterView = footer
+    }
+    
 }
