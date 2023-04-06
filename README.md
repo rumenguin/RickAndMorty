@@ -6,7 +6,7 @@
 
 - Used Swift 5, UIKit, SwiftUI.
 
--  Used The Rick and Morty API (https://rickandmortyapi.com/api) to fetch all data.
+-  Used The Rick and Morty API (https://rickandmortyapi.com) to fetch all data.
 
 -  The app showcases characters, episodes and locations of The Rick and Morty series.
 
