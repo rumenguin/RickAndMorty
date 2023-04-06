@@ -1,7 +1,9 @@
-# Rick and Morty App
+# Rick and Morty iOS App
+
+
 
 Full featured iOS app showcasing the Rick and Morty API.
 
-- Written in Swift
-- Unit Tested
+- Used Swift 5, UIKit, SwiftUI
+- 
 
