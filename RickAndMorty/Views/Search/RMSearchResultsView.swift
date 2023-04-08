@@ -256,9 +256,24 @@ extension RMSearchResultsView: UIScrollViewDelegate {
                 
                 viewModel.fetchAdditionalResults { [weak self] newResults in
                     //refresh table
-                    self?.tableView.tableFooterView = nil
-                    self?.collectionViewCellViewModels = newResults
-                    print("\(newResults.count)")
+                    guard let strongSelf = self else { return }
+                    
+                    DispatchQueue.main.async {
+                        strongSelf.tableView.tableFooterView = nil
+                        
+                        let originalCount = strongSelf.collectionViewCellViewModels.count //20
+                        //Bug Fixed Here
+                        let newCount = newResults.count - originalCount //40-20 = 20
+                        let total = originalCount + newCount //20 + 20 = 40
+                        let startingIndex = total - newCount //40-20 = 20
+                        let indexPathsToAdd: [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap({
+                            return IndexPath(row: $0, section: 0)
+                        })
+                        //print("\(newResults.count)")
+                        strongSelf.collectionViewCellViewModels = newResults
+                        strongSelf.collectionView.insertItems(at: indexPathsToAdd)
+                    }
+            
                 }
                 
             }
