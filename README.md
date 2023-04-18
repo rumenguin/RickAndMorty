@@ -107,7 +107,7 @@
 
 - You can also search for episodes, just tap on the search icon in right navigation bar.
 
-![Alt text](RM/v2/Episodesv2/episdetails.png)
+![Alt text](RM/v2/Episodesv2/episearch.png)
 
 - You can search any episode by name.
 
