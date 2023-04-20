@@ -1,4 +1,4 @@
-# Rick and Morty App
+# Rick and Morty
 
 ## Full featured Universal App (iOS, iPadOS, macOS) showcasing the Rick and Morty API
 
@@ -9,13 +9,12 @@
 - Designed with MVVM pattern
 - No External Dependencies
 - Pagination Support for data
-- Auto layout Based
-- Universal App: Run on iPhone, iPad, and Mac
-- Leverages Free [Rick and Morty API](https://rickandmortyapi.com) to fetch all data.
--  The app showcases characters, episodes and locations of The Rick and Morty series.
+- Auto Layout Based
+- Universal App: Run on iPhone, iPad, Mac
+- Leverages Free [Rick and Morty API](https://rickandmortyapi.com) to fetch all data
+- The app showcases characters, episodes and locations of The Rick and Morty series
 
 ![Alt text](RM/v2/coverphoto.png)
-
 
 ## Characters Tab
 
@@ -114,4 +113,4 @@
 
 # Note:
 
-- Unit and UI Testing is coming soon
+- Unit and UI Testing is coming soon.
